@@ -85,7 +85,7 @@ int main()
                 ignore_the_N = true;
                 inStream.get(anAnswer[counter++]);
             }
-            else if (ignore_the_N && anAnswer[counter - 1] == 'N')
+             if (ignore_the_N && anAnswer[counter - 1] == 'N')
             {
                 counter--;
                 inStream.get(anAnswer[counter++]);
