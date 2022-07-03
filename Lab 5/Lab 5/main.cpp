@@ -103,9 +103,15 @@ int main()
             // continue reading the character
             // read the next char.
             inStream.get(anAnswer[counter++]);
+            if (inStream.eof())
+            {
+                anAnswer[counter++] = '\n';
+            }
+            //there is no endl literally end thats why we cant read it
         }
         inStream.close();
-        //the thing get only to dot, it needs to read \n 
+        inStream.open("Answers.txt");
+        //the thing get only to dot, it needs to read \n
         for (int i = 0; i < counter; i++)
                             cout << anAnswer[i];
     }
