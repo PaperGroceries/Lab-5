@@ -54,19 +54,27 @@ int main()
         //     inStream.open("answers.txt");
         //     inStream >> anAnswer;
         //     cout << anAnswer << endl;
+        
+        // have to make loop for file to close and reopen when it detects inStream.eof()
+        
         // }
         int counter = 0;
         bool ignore_the_N = false;
         // read the next char.
         inStream.get(anAnswer[counter++]);
-        while (!inStream.eof())
+        while (!inStream.eof())//after assigning the dot the while statement quits as it is the end of file
+            //make sure the last question prints out before the loop is over or restarted
         {
             // I need to read the whole line
             if (anAnswer[counter - 1] == '\n')
             {
                 // provide an answer
-                cout << anAnswer << endl;
+                for (int i = 0; i < counter -1; i++)
+                                    cout << anAnswer[i];
                 counter = 0;
+                
+                cout << "\nPlease enter your question" << endl;
+                                 cin >> question;
             }
             else if (anAnswer[counter - 1] == '#')
             {
@@ -96,6 +104,10 @@ int main()
             // read the next char.
             inStream.get(anAnswer[counter++]);
         }
+        inStream.close();
+        //the thing get only to dot, it needs to read \n 
+        for (int i = 0; i < counter; i++)
+                            cout << anAnswer[i];
     }
 
     return -77;
