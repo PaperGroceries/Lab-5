@@ -43,6 +43,7 @@ int main()
 
         cin >> question;
 
+        cin.ignore();
         // provide an answer - todo
         // string anAnswer;;
         char anAnswer[100];
@@ -75,6 +76,7 @@ int main()
                 
                 cout << "\nPlease enter your question" << endl;
                                  cin >> question;
+                cin.ignore();
             }
             else if (anAnswer[counter - 1] == '#')
             {
@@ -105,7 +107,8 @@ int main()
             inStream.get(anAnswer[counter++]);
             if (inStream.eof())
             {
-                anAnswer[counter++] = '\n';
+                anAnswer[--counter] = '\n';
+                counter++;
             }
             //there is no endl literally end thats why we cant read it
         }
@@ -113,7 +116,7 @@ int main()
         inStream.open("Answers.txt");
         //the thing get only to dot, it needs to read \n
         for (int i = 0; i < counter; i++)
-                            cout << anAnswer[i];
+                cout << anAnswer[i];
     }
 
     return -77;
