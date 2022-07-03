@@ -22,6 +22,7 @@ int get_next_number()
 }
 int main()
 {
+    int x = 0;
     ifstream inStream;
 
     inStream.open("answers.txt");
@@ -71,7 +72,7 @@ int main()
             {
                 // let us get the next number and
                 // it to the answer array
-                int x = 16; //  get_next_number();
+                x = get_next_number(); //  get_next_number();
                 if (x >= 10)
                 {
                     anAnswer[counter - 1] = '1';
@@ -82,6 +83,7 @@ int main()
                     anAnswer[counter - 1] = x + '0'; // '6'
                 }
                 ignore_the_N = true;
+                inStream.get(anAnswer[counter++]);
             }
             else if (ignore_the_N && anAnswer[counter - 1] == 'N')
             {
